@@ -162,7 +162,3 @@ Click **Sign In** in the top navigation bar to instantly choose between Demo Cus
 
 ---
 
-## License
-
-MIT License. Designed and engineered for high-performance agentic travel workflows.
-
