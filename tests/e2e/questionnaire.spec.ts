@@ -41,3 +41,4 @@ test.describe('Roamly 4-Stage Travel Questionnaire Journey', () => {
     await expect(page.getByRole('button', { name: 'Itinerary', exact: true })).toBeVisible();
   });
 });
+

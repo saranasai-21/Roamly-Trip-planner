@@ -450,3 +450,4 @@ export function StaysTab({ trip, onUpdateTrip, isReadOnly = false }: StaysTabPro
     </div>
   );
 }
+

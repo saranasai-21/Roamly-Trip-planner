@@ -248,3 +248,4 @@ export function AdminEnquiriesTable({ initialEnquiries }: AdminEnquiriesTablePro
     </div>
   );
 }
+

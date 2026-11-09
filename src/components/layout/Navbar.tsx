@@ -188,3 +188,4 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
     </>
   );
 }
+

@@ -215,3 +215,4 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
     </section>
   );
 }
+

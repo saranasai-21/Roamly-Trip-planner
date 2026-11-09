@@ -118,3 +118,4 @@ export default async function SharedTripboardPage({ params }: SharePageProps) {
     </div>
   );
 }
+

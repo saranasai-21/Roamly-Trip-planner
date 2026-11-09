@@ -252,3 +252,4 @@ export async function DELETE(
     return NextResponse.json({ error: error.message || 'Internal error' }, { status: 500 });
   }
 }
+

@@ -62,3 +62,4 @@ describe('Currency and Budget Math Domain Tests', () => {
     expect(perRoomNight.perPersonMinor).toBe(22500);
   });
 });
+

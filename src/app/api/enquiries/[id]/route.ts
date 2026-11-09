@@ -40,3 +40,4 @@ export async function PATCH(
     return NextResponse.json({ error: error.message || 'Internal error' }, { status: 500 });
   }
 }
+

@@ -528,3 +528,4 @@ model Upload {
   @@index([userId])
   @@index([tripId])
 }
+

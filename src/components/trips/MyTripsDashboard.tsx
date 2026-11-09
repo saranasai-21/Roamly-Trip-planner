@@ -295,3 +295,4 @@ export function MyTripsDashboard({ initialTrips, currentUser }: MyTripsDashboard
     </div>
   );
 }
+

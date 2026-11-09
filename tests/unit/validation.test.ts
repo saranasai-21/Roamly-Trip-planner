@@ -74,3 +74,4 @@ describe('Traveller and Questionnaire Validation Domain Tests', () => {
     expect(res3.durationDays).toBe(7);
   });
 });
+

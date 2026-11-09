@@ -237,3 +237,4 @@ export function HeroSection({ destinations }: HeroSectionProps) {
     </section>
   );
 }
+

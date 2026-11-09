@@ -95,3 +95,4 @@ docker compose exec app npx tsx prisma/seed.ts
 1. Set `DATABASE_URL` to your production PostgreSQL connection string.
 2. In `package.json` build step, Prisma runs `prisma generate && next build`.
 3. Provide `GEMINI_API_KEY` in your hosting provider's environment variables.
+

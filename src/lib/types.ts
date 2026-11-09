@@ -91,3 +91,4 @@ export interface CurrencyRate {
   rateToUSD: number; // e.g. IDR = 15500, EUR = 0.92, GBP = 0.78
   minorUnitFactor: number; // 100 for USD/EUR/GBP (cents), 1 for IDR/JPY
 }
+

@@ -116,3 +116,4 @@ If `GEMINI_API_KEY` is absent or the API is unreachable, Roamly seamlessly falls
 - **Read-Only Public Sharing**: Tokens generated via `/api/trips/[id]/share` serve scrubbed views at `/share/[token]`. Private traveler notes, phone numbers, email addresses, booking confirmation codes, and payment notes are strictly stripped server-side before delivery.
 - **Access Control**: Mutations (`PATCH`, `DELETE`) require trip ownership or administrative privileges.
 - **Pluggable OTP**: In local sandbox mode, SMS dispatch is simulated with explicit demo indicators (`123456`). Production deployment requires an active provider adapter.
+

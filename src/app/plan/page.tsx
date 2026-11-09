@@ -52,3 +52,4 @@ export default async function PlanPage({ searchParams }: PlanPageProps) {
     </div>
   );
 }
+

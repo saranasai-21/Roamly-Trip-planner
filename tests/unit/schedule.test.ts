@@ -76,3 +76,4 @@ describe('Schedule and Conflict Detection Domain Tests', () => {
     expect(issues.some((i) => i.type === 'tight_connection')).toBe(true);
   });
 });
+

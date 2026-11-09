@@ -118,3 +118,4 @@ export function TripboardWorkspace({
     </div>
   );
 }
+

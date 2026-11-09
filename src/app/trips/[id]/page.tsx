@@ -75,3 +75,4 @@ export default async function TripboardPage({ params }: TripPageProps) {
     </div>
   );
 }
+

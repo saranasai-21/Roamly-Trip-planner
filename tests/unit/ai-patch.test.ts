@@ -95,3 +95,4 @@ describe('AI Planner and Patch Safety Tests', () => {
     expect(result.plan.operations.some((op) => op.itemData?.type === 'meal')).toBe(true);
   });
 });
+

@@ -365,3 +365,4 @@ export function OverviewTab({ trip, onNavigateTab, onOpenExpert }: OverviewTabPr
     </div>
   );
 }
+

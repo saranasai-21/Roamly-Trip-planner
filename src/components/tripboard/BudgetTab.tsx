@@ -515,3 +515,4 @@ export function BudgetTab({ trip, onUpdateTrip, isReadOnly = false }: BudgetTabP
     </div>
   );
 }
+

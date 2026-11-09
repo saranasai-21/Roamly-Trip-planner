@@ -337,3 +337,4 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
     </div>
   );
 }
+

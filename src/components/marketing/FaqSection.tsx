@@ -81,3 +81,4 @@ export function FaqSection() {
     </section>
   );
 }
+

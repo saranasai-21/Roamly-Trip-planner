@@ -99,3 +99,4 @@ export function clearSessionCookie() {
   const cookieStore = cookies();
   cookieStore.delete(SESSION_COOKIE_NAME);
 }
+
