@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: roamly-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: roamly
+      POSTGRES_PASSWORD: roamlypassword
+      POSTGRES_DB: roamly
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U roamly"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roamly-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://roamly:roamlypassword@postgres:5432/roamly?schema=public"
+      NEXT_PUBLIC_APP_NAME: "Roamly"
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+      GEMINI_MODEL: "${GEMINI_MODEL:-gemini-1.5-flash}"
+      NEXT_PUBLIC_MAPLIBRE_STYLE: "https://demotiles.maplibre.org/style.json"
+      DEMO_OTP_CODE: "123456"
+      NEXT_PUBLIC_WHATSAPP_NUMBER: "+15550192834"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
