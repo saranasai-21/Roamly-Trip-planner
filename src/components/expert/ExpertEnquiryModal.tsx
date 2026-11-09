@@ -6,11 +6,9 @@ import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import {
   Users2,
-  MessageSquare,
   Send,
   CheckCircle2,
   AlertCircle,
-  ExternalLink,
 } from 'lucide-react';
 
 interface ExpertEnquiryModalProps {
@@ -33,8 +31,6 @@ export function ExpertEnquiryModal({
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,32 +93,6 @@ export function ExpertEnquiryModal({
             <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{error}</span>
-            </div>
-          )}
-
-          {/* WhatsApp option if configured */}
-          {whatsappNumber && (
-            <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
-              <div>
-                <span className="font-bold text-xs text-emerald-950 block">
-                  Prefer direct instant messaging?
-                </span>
-                <span className="text-[11px] text-emerald-700">
-                  Chat with a specialist on WhatsApp right now.
-                </span>
-              </div>
-              <a
-                href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                  `Hi Roamly team, I have questions about my ${trip.destination.name} itinerary!`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-colors shrink-0"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
             </div>
           )}
 

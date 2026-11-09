@@ -27,10 +27,9 @@ export default function RootLayout({
           href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
         />
       </head>
-      <body className="bg-[#0b0c10] font-sans antialiased selection:bg-purple-600 selection:text-white">
+      <body className="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-purple-600 selection:text-white">
         {children}
       </body>
     </html>
   );
 }
-

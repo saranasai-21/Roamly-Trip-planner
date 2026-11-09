@@ -75,24 +75,24 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
   ];
 
   return (
-    <div className="min-h-screen bg-[#0b0c10] text-slate-100 flex flex-col justify-between">
-      <Navbar theme="dark" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between">
+      <Navbar />
 
       {/* Hero Banner */}
-      <section className="relative h-[440px] md:h-[500px] w-full overflow-hidden bg-slate-900">
+      <section className="relative h-[440px] md:h-[500px] w-full overflow-hidden bg-slate-950">
         <img
           src={destination.heroImage}
           alt={destination.name}
           className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
         <div className="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end pb-12 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="purple" size="sm" className="bg-purple-950/90 text-white border-purple-500/50">
               {destination.country} &bull; {destination.region}
             </Badge>
-            <span className="text-xs font-semibold text-purple-300 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-purple-900/40 flex items-center gap-1">
+            <span className="text-xs font-semibold text-purple-200 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-purple-900/40 flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5 text-purple-400" />
               <span>Recommended: {destination.suggestedDurationDays} Days</span>
             </span>
@@ -102,7 +102,7 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
             {destination.name}
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
             {destination.description}
           </p>
 
@@ -118,7 +118,7 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
                 <Button
                   variant="outline"
                   size="md"
-                  className="bg-slate-900/80 border-purple-800 text-purple-200 hover:text-white"
+                  className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20"
                 >
                   View Sample Tripboard
                   <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -134,13 +134,13 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
         {/* Section 1: Regional Cities & Recommended Night Balance */}
         <div className="space-y-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
               Multi-City Route Architecture
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
               Key Regions & Recommended Night Allocation
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
               Don’t stay in one place. Balance your trip between culture, coasts, and cliffs to minimize transit fatigue.
             </p>
           </div>
@@ -149,11 +149,11 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
             {destination.cities.map((city) => (
               <div
                 key={city.id}
-                className="rounded-2xl bg-slate-900/80 border border-purple-950/60 overflow-hidden flex flex-col justify-between hover:border-purple-600/50 transition-colors"
+                className="rounded-2xl bg-white border border-slate-200 overflow-hidden flex flex-col justify-between hover:border-purple-300 hover:shadow-lg transition-all shadow-sm"
               >
                 <div>
                   {city.heroImage && (
-                    <div className="h-40 w-full overflow-hidden bg-slate-800">
+                    <div className="h-40 w-full overflow-hidden bg-slate-100">
                       <img
                         src={city.heroImage}
                         alt={city.name}
@@ -163,25 +163,25 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
                   )}
                   <div className="p-5 space-y-2">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-white">{city.name}</h3>
+                      <h3 className="text-lg font-bold text-slate-900">{city.name}</h3>
                       <Badge variant="purple" size="sm">
                         {city.defaultNights} Nights Ideal
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed">
                       {city.description}
                     </p>
                   </div>
                 </div>
 
                 <div className="p-5 pt-0">
-                  <span className="text-[11px] font-semibold text-purple-300 block mb-1">
+                  <span className="text-[11px] font-semibold text-purple-700 block mb-1">
                     Top Experiences:
                   </span>
-                  <ul className="text-xs text-slate-300 space-y-1">
+                  <ul className="text-xs text-slate-700 space-y-1">
                     {city.activities.slice(0, 2).map((act) => (
                       <li key={act.id} className="flex items-center gap-1.5 truncate">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-600" />
                         <span className="truncate">{act.title}</span>
                       </li>
                     ))}
@@ -195,21 +195,21 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
         {/* Section 2: Climate Matrix & Visa Requirements */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Monthly Climate Guide */}
-          <div className="lg:col-span-6 rounded-2xl bg-slate-900/90 border border-purple-900/40 p-6 space-y-5">
+          <div className="lg:col-span-6 rounded-2xl bg-white border border-slate-200 p-6 space-y-5 shadow-sm">
             <div className="flex items-center gap-2">
-              <Sun className="w-5 h-5 text-purple-400" />
-              <h3 className="text-base font-bold text-white">
+              <Sun className="w-5 h-5 text-purple-600" />
+              <h3 className="text-base font-bold text-slate-900">
                 Monthly Climate & Best Travel Windows
               </h3>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               {destination.weatherNotes ||
                 'Dry season features clear skies and low humidity. Tropical wet season brings brief afternoon downpours with lush greenery.'}
             </p>
 
             <div className="space-y-2">
-              <span className="text-xs font-semibold text-slate-400">
+              <span className="text-xs font-semibold text-slate-700">
                 12-Month Suitability Matrix:
               </span>
               <div className="grid grid-cols-6 sm:grid-cols-12 gap-1.5 text-center">
@@ -220,8 +220,8 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
                       key={month}
                       className={`p-2 rounded-xl text-xs font-bold border transition-all ${
                         isBest
-                          ? 'bg-purple-600/30 border-purple-500 text-purple-200'
-                          : 'bg-slate-800/50 border-slate-700/50 text-slate-500'
+                          ? 'bg-purple-50 border-purple-300 text-purple-700 shadow-sm'
+                          : 'bg-slate-50 border-slate-200 text-slate-400'
                       }`}
                     >
                       <span>{month}</span>
@@ -248,8 +248,8 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
         {/* Section 3: Arrival Airports */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Plane className="w-5 h-5 text-purple-400" />
-            <h3 className="text-xl font-bold text-white">
+            <Plane className="w-5 h-5 text-purple-600" />
+            <h3 className="text-xl font-bold text-slate-900">
               Primary Arrival Ports & Airports
             </h3>
           </div>
@@ -258,18 +258,18 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
             {destination.cities.flatMap((c) => c.airports).map((airport) => (
               <div
                 key={airport.id}
-                className="p-4 rounded-xl bg-slate-900/70 border border-purple-950/60 flex items-center justify-between"
+                className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-between"
               >
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm font-extrabold text-purple-400 bg-purple-950 px-2 py-0.5 rounded">
+                    <span className="font-mono text-sm font-extrabold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-100">
                       {airport.iata}
                     </span>
-                    <span className="font-semibold text-xs text-white">
+                    <span className="font-semibold text-xs text-slate-900">
                       {airport.name}
                     </span>
                   </div>
-                  <span className="text-[11px] text-slate-400 mt-1 block">
+                  <span className="text-[11px] text-slate-500 mt-1 block">
                     {airport.country}
                   </span>
                 </div>
@@ -279,12 +279,12 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
         </div>
 
         {/* Section 4: Ready-made Itineraries */}
-        <div className="space-y-6 pt-6 border-t border-purple-950/40">
+        <div className="space-y-6 pt-6 border-t border-slate-200">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
               Curated Collections
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
               Ready-Made Itineraries for {destination.name}
             </h2>
           </div>
@@ -293,7 +293,7 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
             {destination.templates.map((tpl) => (
               <div
                 key={tpl.id}
-                className="rounded-2xl bg-slate-900 border border-purple-900/40 p-5 flex flex-col justify-between space-y-4"
+                className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 flex flex-col justify-between space-y-4 hover:shadow-lg transition-all hover:border-purple-300"
               >
                 <div className="flex gap-4">
                   <img
@@ -305,19 +305,19 @@ export default async function DestinationDetailPage({ params }: DestinationPageP
                     <Badge variant="purple" size="sm">
                       {tpl.durationDays} Days &bull; {tpl.nights} Nights
                     </Badge>
-                    <h4 className="font-bold text-white text-base leading-tight">
+                    <h4 className="font-bold text-slate-900 text-base leading-tight">
                       {tpl.title}
                     </h4>
-                    <p className="text-xs text-slate-400 line-clamp-2">
+                    <p className="text-xs text-slate-600 line-clamp-2">
                       {tpl.subtitle}
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href={`/templates/${tpl.slug}`}
-                    className="text-xs font-semibold text-purple-400 hover:text-purple-300"
+                    className="text-xs font-semibold text-purple-700 hover:text-purple-900"
                   >
                     View Details &rarr;
                   </Link>

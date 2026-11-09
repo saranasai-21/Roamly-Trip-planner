@@ -194,10 +194,10 @@ export function QuestionnaireWizard({
               }}
               className={`text-left p-3 rounded-2xl border transition-all ${
                 isActive
-                  ? 'bg-purple-950/80 border-purple-500 shadow-sm ring-1 ring-purple-500/50'
+                  ? 'bg-purple-50 border-purple-500 shadow-sm ring-1 ring-purple-500/40'
                   : isDone
-                  ? 'bg-slate-900 border-purple-900/60 hover:border-purple-600'
-                  : 'bg-slate-950/40 border-slate-800 text-slate-600 opacity-60 pointer-events-none'
+                  ? 'bg-white border-slate-200 hover:border-purple-300 shadow-xs'
+                  : 'bg-slate-50 border-slate-200 text-slate-400 opacity-60 pointer-events-none'
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
@@ -206,21 +206,21 @@ export function QuestionnaireWizard({
                     isDone
                       ? 'bg-purple-600 text-white'
                       : isActive
-                      ? 'bg-purple-500 text-white animate-pulse'
-                      : 'bg-slate-800 text-slate-400'
+                      ? 'bg-purple-600 text-white shadow-sm'
+                      : 'bg-slate-200 text-slate-600'
                   }`}
                 >
                   {isDone ? <Check className="w-3 h-3" /> : s.num}
                 </span>
                 <span
                   className={`text-[11px] font-bold uppercase tracking-wider ${
-                    isActive ? 'text-purple-300' : 'text-slate-400'
+                    isActive ? 'text-purple-700' : 'text-slate-500'
                   }`}
                 >
                   Step {s.num}
                 </span>
               </div>
-              <p className="text-xs font-semibold text-white truncate hidden sm:block">
+              <p className="text-xs font-semibold text-slate-800 truncate hidden sm:block">
                 {s.label}
               </p>
             </button>
@@ -230,26 +230,26 @@ export function QuestionnaireWizard({
 
       {/* Validation alert */}
       {validationError && (
-        <div className="p-4 rounded-2xl bg-rose-950/60 border border-rose-800/80 flex items-center gap-3 text-rose-300 text-xs">
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-center gap-3 text-rose-700 text-xs">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
           <span>{validationError}</span>
         </div>
       )}
 
       {/* Wizard Form Container */}
-      <div className="rounded-3xl bg-slate-900/90 border border-purple-900/50 p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+      <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-xl">
         
         {/* STEP 1: WHO */}
         {currentStep === 1 && (
           <div className="space-y-8 animate-fadeIn">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Step 1 of 4
               </span>
-              <h2 className="text-2xl font-black text-white mt-1">
+              <h2 className="text-2xl font-black text-slate-900 mt-1">
                 Who is embarking on this journey?
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 Tell us your travel group composition to configure rooms, pace, and activities.
               </p>
             </div>
@@ -257,10 +257,10 @@ export function QuestionnaireWizard({
             {/* Age Group Pickers */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Adults */}
-              <div className="p-4 rounded-2xl bg-slate-800/70 border border-purple-950 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-sm text-white">Adults</h4>
-                  <span className="text-xs text-slate-400">Age 18–59</span>
+                  <h4 className="font-bold text-sm text-slate-900">Adults</h4>
+                  <span className="text-xs text-slate-500">Age 18–59</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -268,17 +268,17 @@ export function QuestionnaireWizard({
                     onClick={() =>
                       setDraft((p) => ({ ...p, adults: Math.max(0, p.adults - 1) }))
                     }
-                    className="w-8 h-8 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     -
                   </button>
-                  <span className="font-mono font-bold text-base text-white w-4 text-center">
+                  <span className="font-mono font-bold text-base text-slate-900 w-4 text-center">
                     {draft.adults}
                   </span>
                   <button
                     type="button"
                     onClick={() => setDraft((p) => ({ ...p, adults: p.adults + 1 }))}
-                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     +
                   </button>
@@ -286,10 +286,10 @@ export function QuestionnaireWizard({
               </div>
 
               {/* Children */}
-              <div className="p-4 rounded-2xl bg-slate-800/70 border border-purple-950 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-sm text-white">Children</h4>
-                  <span className="text-xs text-slate-400">Age 3–17</span>
+                  <h4 className="font-bold text-sm text-slate-900">Children</h4>
+                  <span className="text-xs text-slate-500">Age 3–17</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -297,17 +297,17 @@ export function QuestionnaireWizard({
                     onClick={() =>
                       setDraft((p) => ({ ...p, children: Math.max(0, p.children - 1) }))
                     }
-                    className="w-8 h-8 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     -
                   </button>
-                  <span className="font-mono font-bold text-base text-white w-4 text-center">
+                  <span className="font-mono font-bold text-base text-slate-900 w-4 text-center">
                     {draft.children}
                   </span>
                   <button
                     type="button"
                     onClick={() => setDraft((p) => ({ ...p, children: p.children + 1 }))}
-                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     +
                   </button>
@@ -315,10 +315,10 @@ export function QuestionnaireWizard({
               </div>
 
               {/* Infants */}
-              <div className="p-4 rounded-2xl bg-slate-800/70 border border-purple-950 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-sm text-white">Infants</h4>
-                  <span className="text-xs text-slate-400">Age 0–2</span>
+                  <h4 className="font-bold text-sm text-slate-900">Infants</h4>
+                  <span className="text-xs text-slate-500">Age 0–2</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -326,17 +326,17 @@ export function QuestionnaireWizard({
                     onClick={() =>
                       setDraft((p) => ({ ...p, infants: Math.max(0, p.infants - 1) }))
                     }
-                    className="w-8 h-8 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     -
                   </button>
-                  <span className="font-mono font-bold text-base text-white w-4 text-center">
+                  <span className="font-mono font-bold text-base text-slate-900 w-4 text-center">
                     {draft.infants}
                   </span>
                   <button
                     type="button"
                     onClick={() => setDraft((p) => ({ ...p, infants: p.infants + 1 }))}
-                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     +
                   </button>
@@ -344,10 +344,10 @@ export function QuestionnaireWizard({
               </div>
 
               {/* Elders */}
-              <div className="p-4 rounded-2xl bg-slate-800/70 border border-purple-950 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-sm text-white">Elders</h4>
-                  <span className="text-xs text-slate-400">Age 60+</span>
+                  <h4 className="font-bold text-sm text-slate-900">Elders</h4>
+                  <span className="text-xs text-slate-500">Age 60+</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -355,17 +355,17 @@ export function QuestionnaireWizard({
                     onClick={() =>
                       setDraft((p) => ({ ...p, elders: Math.max(0, p.elders - 1) }))
                     }
-                    className="w-8 h-8 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     -
                   </button>
-                  <span className="font-mono font-bold text-base text-white w-4 text-center">
+                  <span className="font-mono font-bold text-base text-slate-900 w-4 text-center">
                     {draft.elders}
                   </span>
                   <button
                     type="button"
                     onClick={() => setDraft((p) => ({ ...p, elders: p.elders + 1 }))}
-                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm flex items-center justify-center transition-colors"
                   >
                     +
                   </button>
@@ -375,7 +375,7 @@ export function QuestionnaireWizard({
 
             {/* Optional Occasion */}
             <div className="space-y-3">
-              <label className="block text-xs font-bold text-slate-300">
+              <label className="block text-xs font-bold text-slate-700">
                 Special Occasion (Optional)
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -393,8 +393,8 @@ export function QuestionnaireWizard({
                     onClick={() => setDraft((p) => ({ ...p, occasion: occ.id as any }))}
                     className={`p-3 rounded-xl border text-xs font-medium text-left transition-all ${
                       draft.occasion === occ.id
-                        ? 'bg-purple-600 text-white border-purple-400 shadow-md ring-2 ring-purple-400/40'
-                        : 'bg-slate-800/80 border-slate-700/60 text-slate-300 hover:bg-slate-800'
+                        ? 'bg-purple-600 text-white border-purple-600 shadow-md ring-2 ring-purple-400/40'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {occ.label}
@@ -409,56 +409,56 @@ export function QuestionnaireWizard({
         {currentStep === 2 && (
           <div className="space-y-8 animate-fadeIn">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Step 2 of 4
               </span>
-              <h2 className="text-2xl font-black text-white mt-1">
+              <h2 className="text-2xl font-black text-slate-900 mt-1">
                 When are you planning to travel?
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 Select your travel window. We will compute total days, nights, and regional seasons.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Departure Date
                 </label>
                 <div className="relative">
-                  <Calendar className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                  <Calendar className="absolute left-3.5 top-3 w-4 h-4 text-slate-500" />
                   <input
                     type="date"
                     value={draft.startDate}
                     onChange={(e) => setDraft((p) => ({ ...p, startDate: e.target.value }))}
-                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Return Date
                 </label>
                 <div className="relative">
-                  <Calendar className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                  <Calendar className="absolute left-3.5 top-3 w-4 h-4 text-slate-500" />
                   <input
                     type="date"
                     value={draft.endDate}
                     onChange={(e) => setDraft((p) => ({ ...p, endDate: e.target.value }))}
-                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
                   />
                 </div>
               </div>
             </div>
 
             {/* Calculated Duration Banner */}
-            <div className="p-4 rounded-2xl bg-purple-950/50 border border-purple-800/40 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-purple-50 border border-purple-200 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-purple-400" />
+                <Clock className="w-5 h-5 text-purple-600" />
                 <div>
-                  <h4 className="font-bold text-sm text-white">Calculated Duration</h4>
-                  <p className="text-xs text-purple-300">
+                  <h4 className="font-bold text-sm text-slate-900">Calculated Duration</h4>
+                  <p className="text-xs text-purple-700 font-medium">
                     {diffDays} Days / {diffNights} Nights
                   </p>
                 </div>
@@ -474,20 +474,20 @@ export function QuestionnaireWizard({
         {currentStep === 3 && (
           <div className="space-y-8 animate-fadeIn">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Step 3 of 4
               </span>
-              <h2 className="text-2xl font-black text-white mt-1">
+              <h2 className="text-2xl font-black text-slate-900 mt-1">
                 Where would you like to explore?
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 Select your primary destination and departure / return airports.
               </p>
             </div>
 
             {/* Destination Selector */}
             <div className="space-y-3">
-              <label className="block text-xs font-semibold text-slate-300">
+              <label className="block text-xs font-semibold text-slate-700">
                 Choose Destination
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -506,23 +506,23 @@ export function QuestionnaireWizard({
                       }
                       className={`relative rounded-2xl overflow-hidden border p-3 text-left transition-all flex flex-col justify-between h-36 ${
                         isSelected
-                          ? 'border-purple-500 ring-2 ring-purple-500/50'
-                          : 'border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
+                          ? 'border-purple-600 ring-2 ring-purple-500/50 shadow-md'
+                          : 'border-slate-200 hover:border-slate-300 shadow-xs'
                       }`}
                     >
                       <img
                         src={d.heroImage}
                         alt={d.name}
-                        className="absolute inset-0 w-full h-full object-cover -z-10"
+                        className="w-full h-full object-cover absolute inset-0 -z-10"
                       />
-                      <div className="absolute inset-0 bg-slate-950/60 -z-10" />
+                      <div className="absolute inset-0 bg-slate-950/50 -z-10" />
 
                       <div className="flex justify-between items-start">
-                        <Badge variant="purple" size="sm">
+                        <Badge variant="purple" size="sm" className="bg-white/95 text-purple-900 font-bold border-purple-200">
                           {d.country}
                         </Badge>
                         {isSelected && (
-                          <span className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">
+                          <span className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs shadow">
                             <Check className="w-3 h-3" />
                           </span>
                         )}
@@ -530,7 +530,7 @@ export function QuestionnaireWizard({
 
                       <div>
                         <h4 className="font-bold text-white text-base">{d.name}</h4>
-                        <span className="text-[11px] text-slate-300">
+                        <span className="text-[11px] text-slate-200">
                           {d.cities.length} Curated Regions
                         </span>
                       </div>
@@ -543,7 +543,7 @@ export function QuestionnaireWizard({
             {/* City Checkboxes for chosen destination */}
             {currentDestination && currentDestination.cities.length > 0 && (
               <div className="space-y-3">
-                <label className="block text-xs font-semibold text-slate-300">
+                <label className="block text-xs font-semibold text-slate-700">
                   Select Regions to Include in Itinerary
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -563,8 +563,8 @@ export function QuestionnaireWizard({
                         }}
                         className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                           isSelected
-                            ? 'bg-purple-600 text-white border-purple-500'
-                            : 'bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600'
+                            ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
+                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                         }`}
                       >
                         <MapPin className="w-3 h-3" />
@@ -579,11 +579,11 @@ export function QuestionnaireWizard({
             {/* Airports */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Departure Airport (City or IATA)
                 </label>
                 <div className="relative">
-                  <Plane className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                  <Plane className="absolute left-3.5 top-3 w-4 h-4 text-slate-500" />
                   <input
                     type="text"
                     value={draft.departureAirport}
@@ -594,17 +594,17 @@ export function QuestionnaireWizard({
                       }))
                     }
                     placeholder="DPS or JFK"
-                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl pl-10 pr-4 py-2.5 text-sm uppercase font-mono focus:border-purple-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl pl-10 pr-4 py-2.5 text-sm uppercase font-mono focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Return Airport (Independently Editable)
                 </label>
                 <div className="relative">
-                  <Plane className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 rotate-180" />
+                  <Plane className="absolute left-3.5 top-3 w-4 h-4 text-slate-500 rotate-180" />
                   <input
                     type="text"
                     value={draft.returnAirport}
@@ -615,7 +615,7 @@ export function QuestionnaireWizard({
                       }))
                     }
                     placeholder="DPS or JFK"
-                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl pl-10 pr-4 py-2.5 text-sm uppercase font-mono focus:border-purple-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl pl-10 pr-4 py-2.5 text-sm uppercase font-mono focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
                   />
                 </div>
               </div>
@@ -627,20 +627,20 @@ export function QuestionnaireWizard({
         {currentStep === 4 && (
           <div className="space-y-8 animate-fadeIn">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Step 4 of 4
               </span>
-              <h2 className="text-2xl font-black text-white mt-1">
+              <h2 className="text-2xl font-black text-slate-900 mt-1">
                 How do you prefer to travel?
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 Specify your ideal pace, dining preferences, and travel focus.
               </p>
             </div>
 
             {/* Travel Pace */}
             <div className="space-y-3">
-              <label className="block text-xs font-bold text-slate-300">
+              <label className="block text-xs font-bold text-slate-700">
                 Itinerary Pace
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -667,12 +667,12 @@ export function QuestionnaireWizard({
                     onClick={() => setDraft((p) => ({ ...p, pace: item.id as PaceType }))}
                     className={`p-4 rounded-2xl border text-left transition-all ${
                       draft.pace === item.id
-                        ? 'bg-purple-950/80 border-purple-500 ring-2 ring-purple-500/40'
-                        : 'bg-slate-800/80 border-slate-700/60 hover:bg-slate-800'
+                        ? 'bg-purple-50 border-purple-500 ring-2 ring-purple-500/40 shadow-sm'
+                        : 'bg-slate-50 border-slate-200 hover:bg-slate-100'
                     }`}
                   >
-                    <h4 className="font-bold text-sm text-white mb-1">{item.label}</h4>
-                    <p className="text-[11px] text-slate-400 leading-snug">{item.desc}</p>
+                    <h4 className="font-bold text-sm text-slate-900 mb-1">{item.label}</h4>
+                    <p className="text-[11px] text-slate-600 leading-snug">{item.desc}</p>
                   </button>
                 ))}
               </div>
@@ -680,7 +680,7 @@ export function QuestionnaireWizard({
 
             {/* Dietary Preference */}
             <div className="space-y-3">
-              <label className="block text-xs font-bold text-slate-300">
+              <label className="block text-xs font-bold text-slate-700">
                 Dietary Preference
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -698,8 +698,8 @@ export function QuestionnaireWizard({
                     }
                     className={`p-3 rounded-xl border text-xs font-medium text-center transition-all ${
                       draft.dietary === diet.id
-                        ? 'bg-purple-600 text-white border-purple-400 font-bold'
-                        : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-purple-600 text-white border-purple-600 font-bold shadow-xs'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {diet.label}
@@ -710,7 +710,7 @@ export function QuestionnaireWizard({
 
             {/* Travel Style Interests */}
             <div className="space-y-3">
-              <label className="block text-xs font-bold text-slate-300">
+              <label className="block text-xs font-bold text-slate-700">
                 Key Interests & Themes
               </label>
               <div className="flex flex-wrap gap-2">
@@ -736,8 +736,8 @@ export function QuestionnaireWizard({
                       }}
                       className={`px-3 py-1.5 rounded-xl border text-xs font-medium transition-colors ${
                         isSelected
-                          ? 'bg-purple-600/40 text-purple-200 border-purple-400'
-                          : 'bg-slate-800 text-slate-400 border-slate-700'
+                          ? 'bg-purple-50 text-purple-700 border-purple-300 font-semibold'
+                          : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
                       }`}
                     >
                       {interest}
@@ -750,14 +750,14 @@ export function QuestionnaireWizard({
         )}
 
         {/* Wizard Footer Navigation */}
-        <div className="mt-10 pt-6 border-t border-purple-950/60 flex items-center justify-between">
+        <div className="mt-10 pt-6 border-t border-slate-200 flex items-center justify-between">
           {currentStep > 1 ? (
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={handlePrevStep}
-              className="bg-transparent border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
+              className="bg-white border-slate-300 text-slate-700 hover:bg-slate-50"
             >
               <ArrowLeft className="w-4 h-4 mr-1.5" />
               <span>Back</span>
@@ -777,7 +777,7 @@ export function QuestionnaireWizard({
               size="lg"
               isLoading={isSubmitting}
               onClick={handleSubmit}
-              className="font-bold shadow-lg shadow-purple-600/40"
+              className="font-bold shadow-lg shadow-purple-600/30"
             >
               <Sparkles className="w-4 h-4 mr-2" />
               <span>Generate My Visual Tripboard</span>

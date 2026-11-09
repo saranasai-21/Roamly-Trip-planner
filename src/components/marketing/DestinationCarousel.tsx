@@ -39,26 +39,26 @@ interface DestinationCarouselProps {
 
 export function DestinationCarousel({ destinations, templates }: DestinationCarouselProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#0d0c15] text-white">
+    <section className="py-16 md:py-24 bg-slate-50/70 border-t border-slate-200/80 text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Curated Destinations Section */}
         <div className="space-y-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Explore The World
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                 Curated Travel Destinations
               </h2>
-              <p className="text-sm text-slate-400 mt-1 max-w-xl">
+              <p className="text-sm text-slate-600 mt-1 max-w-xl">
                 Verified climates, travel visa guidelines, arrival airports, and multi-city route recommendations.
               </p>
             </div>
             <Link
               href="/destinations"
-              className="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition-colors"
+              className="text-xs font-bold text-purple-700 hover:text-purple-900 flex items-center gap-1.5 transition-colors"
             >
               <span>View All Destinations</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -70,37 +70,37 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
               <Link
                 key={d.id}
                 href={`/destinations/${d.slug}`}
-                className="group relative rounded-2xl overflow-hidden bg-slate-900 border border-purple-950/60 hover:border-purple-600/60 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-purple-950/40 flex flex-col h-[380px]"
+                className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-purple-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col h-[380px]"
               >
-                <div className="relative h-48 w-full overflow-hidden bg-slate-800">
+                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                   <img
                     src={d.heroImage}
                     alt={d.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                   <div className="absolute top-3 left-3">
-                    <Badge variant="purple" size="sm" className="bg-purple-950/80 backdrop-blur-md text-white border-purple-500/40 font-bold">
+                    <Badge variant="purple" size="sm" className="bg-white/95 backdrop-blur-md text-purple-900 border-purple-200 font-bold shadow-sm">
                       {d.country}
                     </Badge>
                   </div>
-                  <div className="absolute bottom-3 right-3 text-xs font-semibold bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full text-purple-300 border border-purple-900/50 flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-purple-400" />
+                  <div className="absolute bottom-3 right-3 text-xs font-semibold bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-slate-800 border border-slate-200 shadow-sm flex items-center gap-1">
+                    <Calendar className="w-3 h-3 text-purple-600" />
                     <span>{d.suggestedDurationDays} Days Recommended</span>
                   </div>
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-purple-700 transition-colors">
                       {d.name}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-3 mt-2 leading-relaxed">
+                    <p className="text-xs text-slate-600 line-clamp-3 mt-2 leading-relaxed">
                       {d.description}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-purple-400">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-purple-700">
                     <span>Explore Itinerary & Cities</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -111,22 +111,22 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
         </div>
 
         {/* Ready-Made Curated Itineraries Section */}
-        <div className="space-y-6 pt-8 border-t border-purple-950/40">
+        <div className="space-y-6 pt-10 border-t border-slate-200">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                 Ready-Made Itineraries
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                 Curated Trip Templates
               </h2>
-              <p className="text-sm text-slate-400 mt-1 max-w-xl">
+              <p className="text-sm text-slate-600 mt-1 max-w-xl">
                 Ready-to-customise boards featuring real multi-city balances, verified stays, and timed activities.
               </p>
             </div>
             <Link
               href="/templates"
-              className="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition-colors"
+              className="text-xs font-bold text-purple-700 hover:text-purple-900 flex items-center gap-1.5 transition-colors"
             >
               <span>Browse All Collections</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -145,7 +145,7 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
               return (
                 <div
                   key={tpl.id}
-                  className="rounded-2xl overflow-hidden bg-slate-900/90 border border-purple-900/40 hover:border-purple-600/60 p-5 flex flex-col justify-between gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-purple-950/40"
+                  className="rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-purple-300 p-5 flex flex-col justify-between gap-4 transition-all duration-300 hover:shadow-lg shadow-sm"
                 >
                   <div className="flex flex-col sm:flex-row gap-4">
                     <img
@@ -159,20 +159,20 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
                           {tpl.destination.name} &bull; {tpl.durationDays} Days
                         </Badge>
                         {tpl.creator && (
-                          <span className="text-[11px] text-slate-400">
-                            by <span className="text-slate-300 font-semibold">{tpl.creator.name}</span>
+                          <span className="text-[11px] text-slate-500">
+                            by <span className="text-slate-800 font-semibold">{tpl.creator.name}</span>
                             {tpl.creator.isDemo && (
-                              <span className="ml-1 text-[9px] text-purple-400 bg-purple-950 px-1 py-0.5 rounded">
+                              <span className="ml-1 text-[9px] text-purple-700 bg-purple-50 border border-purple-200 px-1 py-0.5 rounded font-bold">
                                 Demo
                               </span>
                             )}
                           </span>
                         )}
                       </div>
-                      <h3 className="text-base font-bold text-white leading-snug">
+                      <h3 className="text-base font-bold text-slate-900 leading-snug">
                         {tpl.title}
                       </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
                         {tpl.subtitle}
                       </p>
                     </div>
@@ -183,7 +183,7 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
                     {pills.slice(0, 4).map((tag, i) => (
                       <span
                         key={i}
-                        className="text-[10px] px-2 py-0.5 rounded-md bg-purple-950/70 border border-purple-800/40 text-purple-300 font-medium"
+                        className="text-[10px] px-2.5 py-0.5 rounded-md bg-purple-50 border border-purple-100 text-purple-700 font-medium"
                       >
                         {tag}
                       </span>
@@ -191,16 +191,16 @@ export function DestinationCarousel({ destinations, templates }: DestinationCaro
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <Link
                       href={`/templates/${tpl.slug}`}
-                      className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                      className="text-xs font-semibold text-slate-700 hover:text-purple-700 transition-colors"
                     >
                       Inspect Itinerary &rarr;
                     </Link>
                     <Link
                       href={`/plan?template=${tpl.slug}`}
-                      className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-sm transition-all"
+                      className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-sm transition-all"
                     >
                       Duplicate & Customise
                     </Link>

@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Compass, Sparkles, MapPin, User, LogOut, MessageSquare, Shield } from 'lucide-react';
+import { Compass, Sparkles, User, LogOut, Shield, Key } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import { AuthModal } from '../auth/AuthModal';
+import { ApiKeyModal } from '../auth/ApiKeyModal';
 import { UserSession } from '@/lib/types';
 
 interface NavbarProps {
@@ -17,13 +18,19 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
   const pathname = usePathname();
   const [user, setUser] = useState<UserSession | null>(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const isDark = theme === 'dark' || pathname === '/';
+  const [isApiKeyOpen, setIsApiKeyOpen] = useState(false);
+  const [hasApiKey, setHasApiKey] = useState(false);
 
   useEffect(() => {
     fetch('/api/auth/me')
       .then((res) => res.json())
       .then((data) => setUser(data.user))
       .catch(() => setUser(null));
+
+    if (typeof window !== 'undefined') {
+      const key = localStorage.getItem('roamly_gemini_api_key');
+      setHasApiKey(!!key);
+    }
   }, []);
 
   const handleLogout = async () => {
@@ -32,43 +39,33 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
     window.location.href = '/';
   };
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-
   return (
     <>
-      <header
-        className={`w-full transition-colors z-40 ${
-          isDark
-            ? 'bg-[#0b0c10]/85 border-b border-purple-950/40 text-white backdrop-blur-md sticky top-0'
-            : 'bg-white/90 border-b border-slate-200 text-slate-800 backdrop-blur-md sticky top-0'
-        }`}
-      >
+      <header className="w-full bg-white/95 border-b border-slate-200/90 text-slate-800 backdrop-blur-md sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo & Brand */}
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-700 to-violet-500 flex items-center justify-center shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-violet-600 flex items-center justify-center shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
                 <Compass className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-purple-400 via-violet-300 to-white bg-clip-text text-transparent">
+                <span className="font-black text-xl tracking-tight bg-gradient-to-r from-purple-700 via-purple-900 to-slate-900 bg-clip-text text-transparent">
                   Roamly
                 </span>
-                <span className="text-[10px] tracking-wider uppercase font-semibold text-purple-400 -mt-1">
+                <span className="text-[10px] tracking-wider uppercase font-extrabold text-purple-600 -mt-1">
                   Trip Planner
                 </span>
               </div>
             </Link>
 
             {/* Main Navigation Links */}
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <nav className="hidden md:flex items-center gap-6 text-sm font-semibold">
               <Link
                 href="/destinations"
-                className={`transition-colors hover:text-purple-400 ${
+                className={`transition-colors hover:text-purple-600 ${
                   pathname?.startsWith('/destinations')
-                    ? 'text-purple-400 font-semibold'
-                    : isDark
-                    ? 'text-slate-300'
+                    ? 'text-purple-600 font-bold'
                     : 'text-slate-600'
                 }`}
               >
@@ -76,11 +73,9 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
               </Link>
               <Link
                 href="/templates"
-                className={`transition-colors hover:text-purple-400 ${
+                className={`transition-colors hover:text-purple-600 ${
                   pathname?.startsWith('/templates')
-                    ? 'text-purple-400 font-semibold'
-                    : isDark
-                    ? 'text-slate-300'
+                    ? 'text-purple-600 font-bold'
                     : 'text-slate-600'
                 }`}
               >
@@ -88,24 +83,20 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
               </Link>
               <Link
                 href="/plan"
-                className={`flex items-center gap-1.5 transition-colors hover:text-purple-400 ${
+                className={`flex items-center gap-1.5 transition-colors hover:text-purple-600 ${
                   pathname === '/plan'
-                    ? 'text-purple-400 font-semibold'
-                    : isDark
-                    ? 'text-slate-300'
+                    ? 'text-purple-600 font-bold'
                     : 'text-slate-600'
                 }`}
               >
-                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                <Sparkles className="w-3.5 h-3.5 text-purple-500" />
                 <span>Plan With AI</span>
               </Link>
               <Link
                 href="/trips"
-                className={`transition-colors hover:text-purple-400 ${
+                className={`transition-colors hover:text-purple-600 ${
                   pathname === '/trips'
-                    ? 'text-purple-400 font-semibold'
-                    : isDark
-                    ? 'text-slate-300'
+                    ? 'text-purple-600 font-bold'
                     : 'text-slate-600'
                 }`}
               >
@@ -114,9 +105,9 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
               {user?.role === 'admin' && (
                 <Link
                   href="/admin"
-                  className="flex items-center gap-1 text-xs font-semibold text-purple-400 bg-purple-950/60 px-2.5 py-1 rounded-lg border border-purple-800/80"
+                  className="flex items-center gap-1 text-xs font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 px-2.5 py-1 rounded-lg border border-purple-200 transition-colors"
                 >
-                  <Shield className="w-3 h-3" />
+                  <Shield className="w-3 h-3 text-purple-600" />
                   <span>Admin Hub</span>
                 </Link>
               )}
@@ -124,39 +115,40 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
           </div>
 
           {/* Right Controls */}
-          <div className="flex items-center gap-3">
-            {whatsappNumber && (
-              <a
-                href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 bg-emerald-950/40 px-3 py-1.5 rounded-xl border border-emerald-800/60 transition-colors"
-                title="Chat directly with an expert on WhatsApp"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Expert WhatsApp</span>
-              </a>
-            )}
+          <div className="flex items-center gap-2.5">
+            {/* Gemini API Key Button for Cloners */}
+            <button
+              type="button"
+              onClick={() => setIsApiKeyOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 hover:border-purple-300 bg-slate-50 hover:bg-purple-50 text-slate-700 hover:text-purple-700 text-xs font-semibold transition-all shadow-2xs"
+              title="Configure your Gemini API key"
+            >
+              <Key className="w-3.5 h-3.5 text-purple-600" />
+              <span className="hidden sm:inline">
+                {hasApiKey ? 'Gemini Key Active' : 'Set Gemini Key'}
+              </span>
+              <span className={`w-2 h-2 rounded-full ${hasApiKey ? 'bg-emerald-500' : 'bg-amber-400'}`} />
+            </button>
 
             {user ? (
               <div className="flex items-center gap-2">
                 <Link
-                  href="/trips"
-                  className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-xs transition-colors"
+                  href={user.role === 'admin' ? '/admin' : '/trips'}
+                  className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-xs transition-colors"
                 >
                   <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-[11px]">
                     {user.name.charAt(0)}
                   </div>
-                  <span className="font-medium text-slate-200 hidden sm:inline">
+                  <span className="font-bold text-slate-800 hidden sm:inline">
                     {user.name.split(' ')[0]}
                   </span>
-                  <Badge variant={user.role === 'admin' ? 'rose' : user.role === 'expert' ? 'amber' : 'purple'} size="sm">
+                  <Badge variant={user.role === 'admin' ? 'rose' : 'purple'} size="sm">
                     {user.role}
                   </Badge>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="p-2 rounded-xl text-slate-400 hover:text-rose-400 hover:bg-slate-800/50 transition-colors"
+                  className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
                   title="Sign out"
                 >
                   <LogOut className="w-4 h-4" />
@@ -164,7 +156,7 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
               </div>
             ) : (
               <Button
-                variant={isDark ? 'primary' : 'primary'}
+                variant="primary"
                 size="sm"
                 onClick={() => setIsAuthOpen(true)}
               >
@@ -176,6 +168,7 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
         </div>
       </header>
 
+      {/* Instant Demo Auth Modal */}
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
@@ -184,8 +177,25 @@ export function Navbar({ theme = 'light' }: NavbarProps) {
             .then((res) => res.json())
             .then((data) => setUser(data.user));
         }}
+        onPromptApiKey={() => {
+          setIsApiKeyOpen(true);
+        }}
+      />
+
+      {/* Gemini API Key Modal for Repo Cloners */}
+      <ApiKeyModal
+        isOpen={isApiKeyOpen}
+        onClose={() => {
+          setIsApiKeyOpen(false);
+          if (typeof window !== 'undefined') {
+            const key = localStorage.getItem('roamly_gemini_api_key');
+            setHasApiKey(!!key);
+          }
+        }}
+        onSaved={() => {
+          setHasApiKey(true);
+        }}
       />
     </>
   );
 }
-

@@ -36,8 +36,8 @@ export default async function HomePage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0b0c10] text-slate-100 flex flex-col justify-between">
-      <Navbar theme="dark" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between">
+      <Navbar />
       <main className="flex-1">
         <HeroSection destinations={destinations} />
         <DestinationCarousel destinations={destinations} templates={templates} />

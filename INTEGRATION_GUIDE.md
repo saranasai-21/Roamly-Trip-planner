@@ -10,10 +10,10 @@ This guide details the integration boundaries in Roamly, distinguishing **live c
 |---|---|---|---|
 | **AI Itinerary Assistant** | Google Gemini API (`@google/generative-ai`) | Deterministic Rule-Based Demo Planner | Supply `GEMINI_API_KEY` and optional `GEMINI_MODEL` |
 | **Interactive Map** | MapLibre GL (`maplibre-gl`) with vector tile layers | Interactive SVG/Canvas Vector Map | Supply custom tile URL in `NEXT_PUBLIC_MAPLIBRE_STYLE` |
-| **Phone Authentication** | Pluggable OTP Provider Interface | Local Sandbox Demo OTP (`123456`) | Connect Twilio, MessageBird, or AWS SNS in `src/lib/auth.ts` |
+| **Authentication** | Demo Customer / Admin Mode | Instant 1-Click Role Access | Connect NextAuth, Clerk, or enterprise SSO in `src/lib/auth.ts` |
 | **Hotel Price Comparison** | Multi-Provider Aggregation Adapter | Labelled Seeded Offer Fixtures (Agoda, Booking, Direct) | Connect affiliate API or GDS aggregator in `StaysTab` |
 | **Booking & Payments** | Adapter Boundary with status tracking | Labelled Sandbox Flow with Manual Reference Entry | Connect Stripe or travel provider API |
-| **Travel Expert Contact** | Trip-linked Enquiry Queue + WhatsApp Link | Seeded Specialist Desk & WhatsApp Intent | Supply `NEXT_PUBLIC_WHATSAPP_NUMBER` |
+| **Travel Expert Contact** | Trip-linked Specialist Queue | Seeded Specialist Desk & Enquiry Review | Connect SendGrid, Resend, or CRM webhook |
 
 ---
 

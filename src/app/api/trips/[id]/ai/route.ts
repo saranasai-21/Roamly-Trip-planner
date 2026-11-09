@@ -10,6 +10,7 @@ export async function POST(
 ) {
   try {
     const { prompt } = await req.json();
+    const customApiKey = req.headers.get('x-gemini-api-key');
 
     if (!prompt || typeof prompt !== 'string') {
       return NextResponse.json({ error: 'Prompt is required.' }, { status: 400 });
@@ -59,7 +60,7 @@ export async function POST(
       })),
     };
 
-    const { plan, isLiveAi } = await generateItineraryPatch(prompt, context);
+    const { plan, isLiveAi } = await generateItineraryPatch(prompt, context, customApiKey);
 
     return NextResponse.json({ plan, isLiveAi });
   } catch (error: any) {

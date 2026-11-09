@@ -25,19 +25,19 @@ export default async function PlanPage({ searchParams }: PlanPageProps) {
   });
 
   return (
-    <div className="min-h-screen bg-[#0b0c10] text-slate-100 flex flex-col justify-between">
-      <Navbar theme="dark" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between">
+      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-8">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-950 border border-purple-800 text-purple-300 text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-semibold">
+            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
             <span>Interactive Itinerary Wizard</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Design Your Trip
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-600">
             Tell us your travel style. We’ll generate a balanced, customizable multi-day visual tripboard in seconds.
           </p>
         </div>

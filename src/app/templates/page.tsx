@@ -19,18 +19,18 @@ export default async function TemplatesDirectoryPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0b0c10] text-slate-100 flex flex-col justify-between">
-      <Navbar theme="dark" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between">
+      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 w-full flex-1">
         <div className="space-y-4">
           <Badge variant="purple" size="sm">
             Curated Tripboards
           </Badge>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Curated Itineraries & Creator Trips
           </h1>
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
             Ready-to-customise travel boards crafted by slow-travel photographers, regional specialists, and our AI travel architects.
           </p>
         </div>
@@ -47,23 +47,23 @@ export default async function TemplatesDirectoryPage() {
             return (
               <div
                 key={tpl.id}
-                className="rounded-2xl overflow-hidden bg-slate-900/90 border border-purple-950/60 hover:border-purple-600/60 transition-all duration-300 flex flex-col justify-between hover:shadow-xl hover:shadow-purple-950/40"
+                className="rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between hover:shadow-xl shadow-sm"
               >
                 <div>
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-800">
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                     <img
                       src={tpl.coverImage}
                       alt={tpl.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                     <div className="absolute top-3 left-3">
-                      <Badge variant="purple" size="sm" className="bg-purple-950/90 text-white border-purple-500/40">
+                      <Badge variant="purple" size="sm" className="bg-white/95 text-purple-900 border-purple-200 font-bold shadow-sm">
                         {tpl.destination.name}
                       </Badge>
                     </div>
-                    <div className="absolute bottom-3 right-3 text-xs font-semibold bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full text-purple-300 border border-purple-900/50 flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-purple-400" />
+                    <div className="absolute bottom-3 right-3 text-xs font-semibold bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-slate-800 border border-slate-200 shadow-sm flex items-center gap-1">
+                      <Calendar className="w-3 h-3 text-purple-600" />
                       <span>{tpl.durationDays} Days ({tpl.nights}N)</span>
                     </div>
                   </div>
@@ -76,21 +76,21 @@ export default async function TemplatesDirectoryPage() {
                           alt={tpl.creator.name}
                           className="w-5 h-5 rounded-full object-cover"
                         />
-                        <span className="text-xs text-slate-300">
+                        <span className="text-xs text-slate-700 font-medium">
                           {tpl.creator.name}
                         </span>
                         {tpl.creator.isDemo && (
-                          <span className="text-[9px] bg-purple-950 text-purple-400 px-1 py-0.5 rounded border border-purple-800/60">
+                          <span className="text-[9px] bg-purple-50 text-purple-700 font-bold px-1.5 py-0.5 rounded border border-purple-200">
                             Demo Creator
                           </span>
                         )}
                       </div>
                     )}
 
-                    <h3 className="text-lg font-bold text-white leading-snug">
+                    <h3 className="text-lg font-bold text-slate-900 leading-snug">
                       {tpl.title}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
                       {tpl.subtitle}
                     </p>
 
@@ -98,7 +98,7 @@ export default async function TemplatesDirectoryPage() {
                       {pills.slice(0, 3).map((pill, i) => (
                         <span
                           key={i}
-                          className="text-[10px] px-2 py-0.5 rounded bg-purple-950/70 border border-purple-900/40 text-purple-300"
+                          className="text-[10px] px-2.5 py-0.5 rounded-md bg-purple-50 border border-purple-100 text-purple-700 font-medium"
                         >
                           {pill}
                         </span>
@@ -107,10 +107,10 @@ export default async function TemplatesDirectoryPage() {
                   </div>
                 </div>
 
-                <div className="p-5 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                <div className="p-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href={`/templates/${tpl.slug}`}
-                    className="text-xs font-semibold text-purple-400 hover:text-purple-300"
+                    className="text-xs font-semibold text-purple-700 hover:text-purple-900"
                   >
                     View Details &rarr;
                   </Link>

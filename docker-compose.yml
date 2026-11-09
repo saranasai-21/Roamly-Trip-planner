@@ -34,12 +34,9 @@ services:
       GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
       GEMINI_MODEL: "${GEMINI_MODEL:-gemini-1.5-flash}"
       NEXT_PUBLIC_MAPLIBRE_STYLE: "https://demotiles.maplibre.org/style.json"
-      DEMO_OTP_CODE: "123456"
-      NEXT_PUBLIC_WHATSAPP_NUMBER: "+15550192834"
     depends_on:
       postgres:
         condition: service_healthy
 
 volumes:
   postgres_data:
-

@@ -58,9 +58,13 @@ export function AIPanel({
     setSuccessNotice(null);
 
     try {
+      const storedKey = typeof window !== 'undefined' ? localStorage.getItem('roamly_gemini_api_key') : null;
       const res = await fetch(`/api/trips/${trip.id}/ai`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(storedKey ? { 'x-gemini-api-key': storedKey } : {}),
+        },
         body: JSON.stringify({ prompt: userPrompt }),
       });
 

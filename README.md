@@ -19,11 +19,11 @@ The heart of the application is a **visual tripboard** structured into five core
 
 ## Visual Design & Architecture
 
-- **Marketing Pages**: Near-black background (`#0b0c10`) with restrained purple radial glow, large white typography with purple gradient accents, two-column hero with an interactive world map, country search, suggested destinations, 4-step workflow, and original FAQ.
+- **Visual Theme**: Clean, production-grade light theme default (`bg-slate-50` / `bg-white`) with refined purple brand accents, high-contrast typography, interactive world map, country search, suggested destinations, 4-step workflow, and original FAQ.
 - **Tripboard Workspace**: Crisp warm-neutral and white surfaces, purple active states, city-and-night navigation chips, responsive horizontal day columns (desktop) and stacked picker (mobile), and activity detail drawers.
-- **AI Architecture**: Pluggable Google Gemini 1.5/2.0 integration on the server using typed structured patch operations. If no API key is set, Roamly gracefully falls back to a deterministic, labelled demo AI planner that supports documented commands.
+- **AI Architecture**: Pluggable Google Gemini integration on the server using typed structured patch operations. Users cloning the repository can directly enter their Google Gemini API key right inside the app (via the automatic post-login prompt or the navbar "Gemini Key" button). If no API key is provided, Roamly seamlessly falls back to a deterministic, labelled demo AI planner that supports documented commands.
 - **Interactive Mapping**: MapLibre GL with configurable tile styles and an interactive SVG/Canvas vector route fallback ensuring 100% offline and testing reliability.
-- **Authentication & Security**: Pluggable phone OTP provider with an explicitly marked Demo OTP mode (`123456`), multi-role access control (`customer`, `expert`, `admin`), and tokenized read-only public sharing that scrubs all private notes, phone numbers, and booking references.
+- **Authentication & Security**: Instant 1-click Customer and Admin demo login, multi-role access control, and tokenized read-only public sharing that scrubs all private notes, phone numbers, and booking references.
 
 ---
 
@@ -146,20 +146,19 @@ npm run build
 - Public viewers can explore the full interactive board or click **Duplicate & Customise** to clone it into their own workspace.
 
 ### 5. Specialist Assistance & Operations Hub (`/admin`)
-- Travelers can request expert human consultation via the tripboard modal or direct WhatsApp link.
+- Travelers can request expert human consultation via the tripboard modal enquiry form.
 - Admins and travel experts can review the queue, assign specialists, draft custom quotes, and update statuses.
 
 ---
 
 ## Demo Credentials & Sandbox Logins
 
-In Demo OTP Mode, enter any phone number and use verification code **`123456`**:
+Click **Sign In** in the top navigation bar to instantly choose between Demo Customer and Administrator:
 
-| Profile | Role | Phone |
+| Profile | Role | Capabilities |
 |---|---|---|
-| **Alex Morgan** | Customer | `+1 555 123 4567` |
-| **Wayman Surya** | Travel Specialist | `+1 555 777 6666` |
-| **Elena Rostova** | Administrator | `+1 555 999 8888` |
+| **Alex Morgan** | Customer | Create trips, drag-and-drop itinerary editing, AI planning, stay selection, export |
+| **Elena Rostova** | Administrator | Full platform access, review inbound enquiries, manage specialist queues |
 
 ---
 

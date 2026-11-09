@@ -217,9 +217,10 @@ export async function runDeterministicDemoPlanner(
  */
 export async function generateItineraryPatch(
   prompt: string,
-  context: TripPlannerContext
+  context: TripPlannerContext,
+  customApiKey?: string | null
 ): Promise<{ plan: AIPatchPlan; isLiveAi: boolean }> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = customApiKey || process.env.GEMINI_API_KEY;
 
   if (!apiKey || apiKey.trim() === '') {
     return runDeterministicDemoPlanner(prompt, context);
